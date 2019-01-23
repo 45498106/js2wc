@@ -23,6 +23,16 @@ int main(){
 }`
 }
 
+function mkdirs(dirPath) {
+    let parent = path.dirname(dirPath);
+    if (!fs.existsSync(parent)) {
+        mkdirs(parent);
+    }
+    if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath);
+    }
+}
+
 /**
  *
  * @param input Input file
@@ -34,6 +44,7 @@ function jsfile2wcfile(input, output) {
         return;
     }
     output = output || `${path.basename(input, ".js")}.cpp`;
+    mkdirs(path.dirname(output));
     fs.writeFileSync(output, js2wc(fs.readFileSync(input)));
 }
 
