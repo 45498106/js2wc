@@ -3,7 +3,7 @@ const path = require("path");
 
 
 /**
- * Warp js input cpp source code
+ * Warp js into cpp source code
  * @param jsStr js code input
  * @returns {string} cpp source code output
  */
