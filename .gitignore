@@ -1,1 +1,4 @@
 .idea
+node_modules
+a.out.*
+.DS_Store
