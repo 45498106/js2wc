@@ -1,8 +1,9 @@
 {
   "name": "js2wc",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "main": "index.js",
   "dependencies": {
     "yargs": "^12.0.5"
-  }
+  },
+  "repository": "https://github.com/plter/js2wc"
 }
