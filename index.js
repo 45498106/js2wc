@@ -23,9 +23,11 @@ int main(){
         (function(){
             var appContextName = "top_yunp_app_context"+$0;
             var appContext = {};
-            if (typeof global!=="undefined"){//support nodejs
+            if (typeof global==="object"){//support nodejs
                 appContext.require=require;
                 appContext.module=module;
+                appContext.__dirname = __dirname;
+                appContext.__filename = __filename;
 
                 global[appContextName] = appContext;
             }
@@ -41,9 +43,9 @@ int main(){
 
     auto str = LR"(${jsStr})";
     auto FunctionClass = emscripten::val::global("Function");
-    auto func = FunctionClass.new_(val("require"),val("module"),std::wstring(str));
+    auto func = FunctionClass.new_(val("require"),val("module"),val("__dirname"),val("__filename"),std::wstring(str));
     auto appContext = emscripten::val::global(appContextName.c_str());
-    func(appContext["require"],appContext["module"]);
+    func(appContext["require"],appContext["module"],appContext["__dirname"],appContext["__filename"]);
     return 0;
 }`
 }
