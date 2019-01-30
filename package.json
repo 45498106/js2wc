@@ -1,6 +1,6 @@
 {
   "name": "js2wc",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "index.js",
   "dependencies": {
     "yargs": "^12.0.5"
